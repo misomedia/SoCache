@@ -12,9 +12,7 @@
 +(void)setData:(NSString*)data forKey:(NSString*)key andExpiration:(NSDate*)expirationDate
 {
     NSMutableDictionary* cacheDict =[[NSMutableDictionary alloc] init];
-//    NSDate* currentDate = [NSDate date];
-//    NSDate* expirationDate = [currentDate dateByAddingTimeInterval:720]; 
-//    
+  
     [cacheDict setValue:expirationDate forKey:@"expiration"];
     [cacheDict setValue:data forKey:@"data"];
     
