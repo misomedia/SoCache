@@ -12,7 +12,9 @@
 +(void)setData:(NSString*)data forKey:(NSString*)key andExpiration:(NSDate*)expirationDate
 {
     NSMutableDictionary* cacheDict =[[NSMutableDictionary alloc] init];
-  
+//    NSDate* currentDate = [NSDate date];
+//    NSDate* expirationDate = [currentDate dateByAddingTimeInterval:720]; 
+//    
     [cacheDict setValue:expirationDate forKey:@"expiration"];
     [cacheDict setValue:data forKey:@"data"];
     
@@ -30,13 +32,11 @@
     NSString* data;
     if(timeDifference < 0)           
     {
-        NSLog(@"data expired");
         data = nil;
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:key];
     }
     else
     {
-        NSLog(@"retrieved cache data");
         data = [cacheDict valueForKey:@"data"];
     }
     return data;
